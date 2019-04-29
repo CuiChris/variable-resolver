@@ -1,7 +1,6 @@
-This utility is for dynamically generating deployment configuration files for multiple environments.
-When you update configuration files, please make sure you run it locally and verify generated configuration files.
+This utility is for dynamically generating files for multiple targets.
 
-Basic folder structure:
+Basic folder structure(dev and prod are just example targets, targets can have any name):
 - variable_resolver.py
 - settings
   - _all
@@ -18,17 +17,17 @@ Basic folder structure:
 
 Folder name conventions:
 _all: this folder contains files apply to all targets.
-env folder: can be anything and you can define as many folders as you want e.g. intdev, local, prod
+target folder: can be anything and you can define as many folders as you want e.g. dev, local, prod
 
 Templates:
 The utility uses Python jinja2 template engine, variable syntax is {{ variable key(supports namespace) }}
 Example: {{ JVM.Startup }}, {{ landing_page_port }}
 
 Settings:
-Should create folder for each env(e.g. local, intdev or prod) under "settings" folder, "_all" applies to all targets.
+Should create folder for each target(e.g. local, dev or prod) under "settings" folder, "_all" applies to all targets.
 Settings supports ini/json/yaml format, accepts ".ini", ".json" and ".yml" only.
 You can create as many setting files as you want, but all variable keys should be unique.
-Eventually the utility merges all setting files and OS env variables to a single dictionary before apply it to all template files.
+Eventually the utility merges all setting files and OS environment variables to a single dictionary before apply it to all template files.
 Priorities(from highest to lowest) when multiple definitions for same variable name
 - Variables defined in specific target folder
 - Variables defined in "_all" folder

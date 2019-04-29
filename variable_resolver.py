@@ -88,7 +88,7 @@ def update_and_output_templates(template_path, template_files, settings, output_
 
 # start
 parser = argparse.ArgumentParser()
-parser.add_argument('--env', help='[Mandatory] deploy env')
+parser.add_argument('--env', help='[Mandatory] target env')
 parser.add_argument('--out', help='[Optional] output path')
 parser.add_argument('--strict', default=False, action='store_true', help='[Optional] Cause error for missing variables in strict mode, default value is False')
 args = parser.parse_args()
